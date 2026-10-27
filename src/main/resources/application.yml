@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: caseflow-legacy
+  config:
+    import: optional:file:.env[.properties]
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:${DB_PORT:54329}/${DB_NAME:caseflow}}
+    username: ${DB_USER:caseflow}
+    password: ${DB_PASSWORD}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate.jdbc.time_zone: UTC
+  flyway:
+    enabled: true
+server:
+  address: 127.0.0.1
+  port: ${PORT:8080}
+  error:
+    include-message: never
+    include-stacktrace: never
